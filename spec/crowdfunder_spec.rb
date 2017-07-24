@@ -48,6 +48,7 @@ describe "crowdfunder sql" do
     end
 
     it "creates a pledge table with an id as a primary key" do
+      puts @db.execute("PRAGMA table_info(pledges);").inspect
       expect(@db.execute("PRAGMA table_info(pledges);").detect { |arr| arr[-1] == 1 && arr[2] == "INTEGER" }.length).to eq(6)
     end
 
